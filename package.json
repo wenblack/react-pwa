@@ -24,6 +24,7 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
+    "dev": "npm run build && npm run start-sw",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
