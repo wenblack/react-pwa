@@ -1,32 +1,34 @@
 import { AddNewTaskBar } from '../../components/AddNewTaskBar'
 import { Header } from '../../components/Header'
-import { TaskList } from '../../components/TaskList'
 import { useState } from 'react'
 import { ProgressBarADHD } from '../../components/ProgressBarADHD'
+import { TaskItem } from '../../components/TaskItem'
 
 export function Home({ userName, functionName }) {
 	const Swal = require('sweetalert2')
+	let nextId = 0;
+	const [arrayTask, SetArrayTasks] = useState([])
 	const [taskName, setTaskName] = useState('')
 	const [submitTaskName, setSubmitTaskName] = useState('')
 	const [taks, setTasks] = useState(0)
 	const [completeTask, setCompleteTask] = useState(0)
 	const [isCompleted, setIsCompleted] = useState(false)
+	const [result, setResult] = useState('')
+	const [taskComplete, setTaskComplet] = useState(false)
+	let complet = ''
 
 	function toggleCompleteTask() {
+
 		if (isCompleted) {
 			setIsCompleted(false)
-			if (completeTask === taks) {
-				setCompleteTask(completeTask - 1)
-			}
+			setCompleteTask(completeTask - 1)
+			complet = false
 		} else {
 			setIsCompleted(true)
-			if (completeTask < taks) {
-				setCompleteTask(completeTask + 1)
-			}
+			setCompleteTask(completeTask + 1)
+			complet = true
 		}
-		return
 	}
-
 	function cancelRefresh(e) {
 		e.preventDefault()
 		saveTasks()
@@ -45,6 +47,11 @@ export function Home({ userName, functionName }) {
 		} else {
 			setSubmitTaskName(taskName)
 			setTasks(taks + 1)
+			arrayTask.push({
+				id: nextId++,
+				name: taskName,
+				completed: false
+			});
 		}
 	}
 
@@ -65,7 +72,11 @@ export function Home({ userName, functionName }) {
 					click={saveTasks}
 					submit={cancelRefresh}
 				/>
-				<TaskList name={submitTaskName} click={toggleCompleteTask} completed={isCompleted}></TaskList>
+				<ul className='w-full max-w-screen-button flex flex-col justify-center mt-4  '>
+					{arrayTask.map(tasks => (
+						<TaskItem key={tasks.id} taskName={tasks.name} click={toggleCompleteTask} completed={complet} />
+					))}
+				</ul>
 			</main>
 		</>
 	)
