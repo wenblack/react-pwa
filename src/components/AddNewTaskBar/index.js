@@ -1,12 +1,12 @@
 import { SearchIcon } from '../searchIcon'
 
-export function AddNewTaskBar({ change, click }) {
+export function AddNewTaskBar({ change, click, submit }) {
 	return (
 		<section className='flex flex-row items-center pb-3 border-b '>
 			<form
 				name='form'
 				id='form'
-				onSubmit={change}
+				onSubmit={submit}
 				className='focus-within:border h-9 focus-within:border-green-600 hover:border hover:border-green-600 mt-6 flex flex-row items-center bg-gray-200 p-6 rounded-lg shadow-lg '
 			>
 				<input
