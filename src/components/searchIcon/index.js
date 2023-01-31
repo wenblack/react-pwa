@@ -4,7 +4,7 @@ export function SearchIcon() {
 	return (
 		<div className='flex items-center justify-center'>
 			<FiPlus
-				color='white'
+				color='green'
 				size={20}
 			/>
 		</div>

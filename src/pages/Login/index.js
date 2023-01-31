@@ -46,13 +46,13 @@ export function Login() {
 					name='form'
 					onSubmit={changeUserName}
 					id='form'
-					className='focus-within:border focus-within:border-blue-600 hover:border hover:border-blue-600 mt-6 flex flex-row items-center bg-gray-200 p-5 rounded-lg shadow-lg '
+					className='focus-within:border focus-within:border-green-600 hover:border hover:border-green-600 mt-6 flex flex-row items-center bg-gray-200 p-5 rounded-lg shadow-lg '
 				>
 					<UserIcon></UserIcon>
 					<input
 						type='text'
 						placeholder='Tell me your name..'
-						className='ml-4 bg-transparent font-semibold outline-none  placeholder:text-blue-600'
+						className='ml-4 text-green-700 bg-transparent font-semibold outline-none   placeholder:text-green-600'
 						onChange={handleNameChange}
 					></input>
 				</form>
@@ -61,7 +61,7 @@ export function Login() {
 					aria-label='send button'
 					type='button'
 					onClick={changeUserName}
-					className='focus:outline-gray-400 outline-8  max-w-screen-button text-lg text-white font-mono font-semibold mt-6 bg-blue-600  w-72 p-4 rounded-lg shadow-sm'
+					className='focus:outline-gray-400 outline-8  max-w-screen-button text-lg text-white font-mono font-semibold mt-6 bg-green-600  w-72 p-4 rounded-lg shadow-sm'
 				>
 					Save
 				</button>
