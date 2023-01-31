@@ -6,14 +6,39 @@ import { useState } from 'react'
 import { Home } from '../Home'
 
 export function Login() {
+	const Swal = require('sweetalert2')
 	const [userName, setUserName] = useState('')
 	const [isUsername, setIsUserName] = useState(false)
+
+	function modalLoading() {
+		let timerInterval
+		Swal.fire({
+			title: 'Saving Your data!',
+			timer: 1500,
+			timerProgressBar: true,
+			didOpen: () => {
+				Swal.showLoading()
+				const b = Swal.getHtmlContainer().querySelector('b')
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft()
+				}, 100)
+			},
+			willClose: () => {
+				clearInterval(timerInterval)
+			}
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer')
+			}
+		})
+	}
 
 	function changeUserName(e) {
 		e.preventDefault()
 
 		if (userName === '') {
-			alert('Username field is blank')
+			Swal.fire('Name field is blank', '', 'error')
 			return
 		}
 		if (isUsername === true) {
@@ -21,6 +46,7 @@ export function Login() {
 			console.log('User disconnected')
 		} else if (isUsername === false) {
 			setIsUserName(true)
+			modalLoading()
 			console.log('User connected')
 		}
 	}
