@@ -6,9 +6,6 @@ import { TaskItem } from '../../components/TaskItem'
 
 
 export function Home({ userName, functionName }) {
-	let total
-	let totalCompleted
-	let nextId = 0;
 	const Swal = require('sweetalert2')
 	const [arrayTask, SetArrayTasks] = useState([])
 	const [taskName, setTaskName] = useState('')
@@ -22,7 +19,6 @@ export function Home({ userName, functionName }) {
 		let totalTask = taks
 		let totalCompletedTasks = completeTask
 
-
 		if (totalCompletedTasks === totalTask) {
 			setResult('success')
 		} else if (totalCompletedTasks < totalTask & totalCompletedTasks > 1) {
@@ -33,14 +29,16 @@ export function Home({ userName, functionName }) {
 
 
 	}, [taks, completeTask])
-	//warning, danger, success
+
 
 	function addNewTaskComplete() {
+		let totalCompleted
 		totalCompleted = completeTask
 		setcompleteTask(totalCompleted + 1)
 	}
 
 	function removeTaskComplete() {
+		let totalCompleted
 		totalCompleted = completeTask
 		setcompleteTask(totalCompleted - 1)
 	}
@@ -57,11 +55,12 @@ export function Home({ userName, functionName }) {
 	}
 
 	function saveTasks(e) {
+		let total
+		let nextId
 		if (taskName === '') {
-			Swal.fire('Task name field is blank', '', 'error')
+			Swal.fire('Task name field is blank', 'Please fill the name field', 'error')
 			return
 		} else {
-
 			setSubmitTaskName(taskName)
 			setTasks(taks + 1)
 			total = taks
