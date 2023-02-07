@@ -1,6 +1,6 @@
 import { AddNewTaskBar } from '../../components/AddNewTaskBar'
 import { Header } from '../../components/Header'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ProgressBarADHD } from '../../components/ProgressBarADHD'
 import { TaskItem } from '../../components/TaskItem'
 
@@ -18,21 +18,31 @@ export function Home({ userName, functionName }) {
 	const [result, setResult] = useState('')
 
 
-	//warning, danger, success
-	function calculateResult() {
+	useEffect(() => {
+		let totalTask = taks
+		let totalCompletedTasks = completeTask
 
-	}
+
+		if (totalCompletedTasks === totalTask) {
+			setResult('success')
+		} else if (totalCompletedTasks < totalTask & totalCompletedTasks > 1) {
+			setResult('warning')
+		} else {
+			setResult('')
+		}
+
+
+	}, [taks, completeTask])
+	//warning, danger, success
 
 	function addNewTaskComplete() {
 		totalCompleted = completeTask
 		setcompleteTask(totalCompleted + 1)
-		calculateResult()
 	}
 
 	function removeTaskComplete() {
 		totalCompleted = completeTask
 		setcompleteTask(totalCompleted - 1)
-		calculateResult()
 	}
 
 	function cancelRefresh(e) {
@@ -51,6 +61,7 @@ export function Home({ userName, functionName }) {
 			Swal.fire('Task name field is blank', '', 'error')
 			return
 		} else {
+
 			setSubmitTaskName(taskName)
 			setTasks(taks + 1)
 			total = taks

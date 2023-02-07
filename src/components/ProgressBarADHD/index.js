@@ -19,7 +19,7 @@ export function ProgressBarADHD({ response, total, complete }) {
 		return (
 			<div className=' text-red-500 text-justify font-semibold mt-4 bg-red-100 border border-red-600 rounded-lg flex flex-col items-center justify-center p-6  w-full max-w-xs'>
 				<h1 className="font-bold"> Completed {complete}/{total} Tasks </h1>
-				<h2 className="mt-2">U Don´t add  or complete any Task! One Step at a Time. Take a breath and lets focus Again!</h2>
+				<h2 className="mt-2">One Step at a Time. Take a breath and lets focus Again!</h2>
 			</div>
 		)
 
