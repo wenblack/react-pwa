@@ -14,7 +14,6 @@ export function Home({ userName, functionName }) {
 	const [completeTask, setcompleteTask] = useState(0)
 	const [result, setResult] = useState('')
 
-
 	useEffect(() => {
 		let totalTask = taks
 		let totalCompletedTasks = completeTask
@@ -32,14 +31,12 @@ export function Home({ userName, functionName }) {
 
 
 	function addNewTaskComplete() {
-		let totalCompleted
-		totalCompleted = completeTask
+		let totalCompleted = completeTask
 		setcompleteTask(totalCompleted + 1)
 	}
 
 	function removeTaskComplete() {
-		let totalCompleted
-		totalCompleted = completeTask
+		let totalCompleted = completeTask
 		setcompleteTask(totalCompleted - 1)
 	}
 
@@ -51,12 +48,11 @@ export function Home({ userName, functionName }) {
 	function addTask(e) {
 		let name = e.target.value
 		setTaskName(name)
-		console.log(taskName)
 	}
 
 	function saveTasks(e) {
 		let total
-		let nextId
+		let nextId = taks
 		if (taskName === '') {
 			Swal.fire('Task name field is blank', 'Please fill the name field', 'error')
 			return

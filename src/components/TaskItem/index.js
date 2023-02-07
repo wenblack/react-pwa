@@ -1,11 +1,10 @@
 import { FiCheck } from 'react-icons/fi'
-import { FiTrash } from 'react-icons/fi'
 import { useState } from 'react'
 
 
 export let completed
 
-export function TaskItem({ taskName, add, remove }) {
+export function TaskItem({ taskName, add, remove, deleted }) {
 	const [isCompleted, setIsCompleted] = useState(false)
 
 
@@ -30,9 +29,6 @@ export function TaskItem({ taskName, add, remove }) {
 				>
 					<FiCheck color='green' onClick={remove} />
 				</button>
-				<button type='button'>
-					<FiTrash color='green' />
-				</button>
 			</li>
 		)
 	} else if (!isCompleted) {
@@ -44,9 +40,6 @@ export function TaskItem({ taskName, add, remove }) {
 					onClick={toggleCompleteTask}
 				>
 					<FiCheck color='red' onClick={add} />
-				</button>
-				<button type='button'>
-					<FiTrash color='red' />
 				</button>
 			</li>
 		)
